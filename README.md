@@ -21,52 +21,12 @@ This plugin automatically adds a `__file-path` attribute to the topmost element 
 - Understand component hierarchy at a glance
 - Debug with confidence knowing exactly where each component is defined
 
-### Advanced Features
-- ✨ **Fragment Support**: Tags ALL top-level elements in fragments, not just the first
-- ✨ **Conditional Rendering**: Handles `condition && <Component />` expressions
-- ✨ **Nested Conditionals**: Recursively processes `a && b && c && <Component />`
-- ✨ **Ternary Expressions**: Tags both branches of `condition ? <A /> : <B />`
-- ✨ **Expression Containers**: Tags JSX in `{<Component />}` syntax
-
-## Who Is This For?
-
-### Ideal Use Cases
-
-#### 1. Large Development Teams
-- **Problem**: New developers struggle to navigate unfamiliar codebases
-- **Solution**: File paths in the DOM help developers quickly locate component source files
-- **Benefit**: Faster onboarding and reduced time asking "where is this component?"
-
-#### 2. Complex Applications
-- **Problem**: Applications with hundreds of components become difficult to debug
-- **Solution**: Instant visibility of component locations without context switching
-- **Benefit**: Significantly faster debugging and development cycles
-
-#### 3. Design System Maintenance
-- **Problem**: Identifying which shared component is being used and where it's defined
-- **Solution**: Clear file paths distinguish between similar components (Button, PrimaryButton, etc.)
-- **Benefit**: Easier maintenance and refactoring of shared components
-
-#### 4. CSS/Styling Debugging
-- **Problem**: Finding the component responsible for specific styles in the rendered DOM
-- **Solution**: File path attribute points directly to the component's source
-- **Benefit**: No more searching through dozens of files for the right component
-
-#### 5. Component Library Documentation
-- **Problem**: Examples in Storybook or docs don't make it clear which component is which
-- **Solution**: File paths in development mode show the exact component being demonstrated
-- **Benefit**: Better documentation and clearer examples
-
-#### 6. Micro-frontend Architectures
-- **Problem**: Hard to tell which micro-app or module a component belongs to
-- **Solution**: File paths reveal the component's origin module/package
-- **Benefit**: Easier debugging across multiple frontend applications
-
-### When NOT to Use
-
-- **Production builds**: This plugin adds metadata that users don't need (though it can be configured for development-only)
-- **Very small projects**: If you have < 20 components, the benefit may not justify the setup
-- **Server-side only rendering**: If your app has no browser-based debugging needs
+###  Features
+- **Fragment Support**: Tags ALL top-level elements in fragments, not just the first
+- **Conditional Rendering**: Handles `condition && <Component />` expressions
+- **Nested Conditionals**: Recursively processes `a && b && c && <Component />`
+- **Ternary Expressions**: Tags both branches of `condition ? <A /> : <B />`
+- **Expression Containers**: Tags JSX in `{<Component />}` syntax
 
 ## Installation
 
@@ -228,10 +188,6 @@ const Button = ({ children, onClick }) => {
 - **Ternary expressions**: Both branches
 - **Direct JSX in expressions**: JSX wrapped in curly braces
 
-❌ **Not Tagged:**
-- Nested child elements (only the topmost/top-level elements)
-- Production builds (when properly configured)
-- Elements that already have the `__file-path` attribute
 
 ### Examples
 
@@ -371,14 +327,6 @@ Works with Vite, Webpack, Next.js, Create React App, and any other React tooling
 
 ## Comparison with Alternatives
 
-### vs. lovable-tagger
-| Feature | lovable-tagger | This Plugin |
-|---------|----------------|-------------|
-| **What it tags** | All JSX elements | Only topmost element per component |
-| **Attribute name** | `data-lovable-id` | `__file-path` |
-| **Customization** | Pre-built package | Fully customizable source |
-| **Path format** | May vary | Configurable, defaults to `src/...` |
-
 ### vs. React DevTools
 | Feature | React DevTools | This Plugin |
 |---------|----------------|-------------|
@@ -426,16 +374,6 @@ Works with Vite, Webpack, Next.js, Create React App, and any other React tooling
 4. **Verify Babel is being used**
    Some tools (like SWC-only configs) may not process Babel plugins. Ensure your build tool supports Babel plugins.
 
-### Attributes Not Appearing?
-
-- **Check the browser DevTools**: Look for `__file-path` attribute on the topmost element
-- **Verify component returns JSX**: The plugin only works with JSX elements, not null/undefined/strings
-- **Check fragments**: Fragment children are all tagged individually
-
-### Multiple Attributes on Same Element?
-
-- The plugin checks for existing `__file-path` attributes and won't duplicate
-- May coexist with other tagger plugins (they use different attribute names)
 
 ## Performance
 
@@ -455,7 +393,6 @@ MIT License - feel free to use this in your projects!
 ## Support
 
 - **Issues**: [GitHub Issues](https://github.com/ordervschaos/babel-plugin-react-component-tagger/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/ordervschaos/babel-plugin-react-component-tagger/discussions)
 
 ## Changelog
 
