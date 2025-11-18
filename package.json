@@ -1,0 +1,46 @@
+{
+  "name": "@ordervschaos/babel-plugin-react-component-tagger",
+  "version": "1.0.0",
+  "description": "A Babel plugin that tags the topmost JSX element in React components with the component's file path for easier debugging and development",
+  "main": "index.js",
+  "type": "module",
+  "keywords": [
+    "babel-plugin",
+    "react",
+    "jsx",
+    "debugging",
+    "development",
+    "component",
+    "file-path",
+    "tagging",
+    "vite",
+    "webpack"
+  ],
+  "author": "Anzal Ansari <toanzal.ansari@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ordervschaos/babel-plugin-react-component-tagger.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ordervschaos/babel-plugin-react-component-tagger/issues"
+  },
+  "homepage": "https://github.com/ordervschaos/babel-plugin-react-component-tagger#readme",
+  "peerDependencies": {
+    "@babel/core": "^7.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.5"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
