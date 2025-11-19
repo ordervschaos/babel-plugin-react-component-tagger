@@ -1,6 +1,6 @@
 {
   "name": "@ordervschaos/babel-plugin-react-component-tagger",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A Babel plugin that tags the topmost JSX element in React components with the component's file path for easier debugging and development",
   "main": "index.js",
   "type": "module",
