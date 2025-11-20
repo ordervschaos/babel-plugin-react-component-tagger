@@ -1,6 +1,6 @@
 # babel-plugin-react-component-tagger
 
-![Screenshot showing __file-path attribute in DevTools](screenshot.png)
+![Screenshot showing __file-path attribute in DevTools](https://raw.githubusercontent.com/ordervschaos/babel-plugin-react-component-tagger/main/screenshot.png)
 
 A Babel plugin that automatically tags the topmost JSX element in React components with the component's file path. This makes debugging and development significantly easier by allowing you to quickly identify which file a component comes from directly in the browser's DevTools.
 
