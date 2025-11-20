@@ -93,6 +93,35 @@ export default function ({ types: t }) {
         } else if (t.isJSXFragment(body)) {
           tagFragmentChildren(body);
         }
+      },
+
+      // Handle JSX elements passed as prop values: <Route element={<MyComponent />} />
+      JSXExpressionContainer(exprPath) {
+        const expression = exprPath.node.expression;
+
+        // Check if this is inside a JSX attribute (prop value)
+        if (t.isJSXAttribute(exprPath.parent)) {
+          // Handle direct JSX element: element={<Component />}
+          if (t.isJSXElement(expression)) {
+            state.topmostElements.add(expression.openingElement);
+          }
+          // Handle logical AND: element={condition && <Component />}
+          else if (t.isLogicalExpression(expression) && expression.operator === '&&') {
+            const jsxElement = extractJSXFromLogicalAnd(expression);
+            if (jsxElement) {
+              state.topmostElements.add(jsxElement.openingElement);
+            }
+          }
+          // Handle ternary: element={condition ? <A /> : <B />}
+          else if (t.isConditionalExpression(expression)) {
+            if (t.isJSXElement(expression.consequent)) {
+              state.topmostElements.add(expression.consequent.openingElement);
+            }
+            if (t.isJSXElement(expression.alternate)) {
+              state.topmostElements.add(expression.alternate.openingElement);
+            }
+          }
+        }
       }
     });
   }
