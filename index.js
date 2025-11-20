@@ -67,8 +67,6 @@ export default function ({ types: t }) {
 
     path.traverse({
       ReturnStatement(returnPath) {
-        if (foundTopmost) return;
-
         const argument = returnPath.node.argument;
 
         // Check if return contains JSX

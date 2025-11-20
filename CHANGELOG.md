@@ -5,6 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1] - 2025-11-19
+
+### Fixed
+- **Critical Bug**: Fixed issue where components with multiple return statements only had their first return tagged
+- Components with early returns (e.g., loading states, error states) now have ALL return statements properly tagged
+- Removed premature `if (foundTopmost) return;` check in `ReturnStatement` visitor that was causing the bug
+
+### Added
+- Test script (`test-plugin.js`) to verify plugin behavior with multiple return statements
+- Documentation files: `ISSUE_ANALYSIS.md` and `LOCAL_TESTING_GUIDE.md`
+- Added `@babel/plugin-syntax-jsx` to devDependencies for testing
+
+### Example of Fix
+```javascript
+// Before v1.2.1 - only first return was tagged
+if (loading) {
+  return <div __file-path="...">Loading</div>  // ✅ Tagged
+}
+return <div>Main content</div>  // ❌ NOT tagged
+
+// After v1.2.1 - all returns are tagged
+if (loading) {
+  return <div __file-path="...">Loading</div>  // ✅ Tagged
+}
+return <div __file-path="...">Main content</div>  // ✅ Tagged
+```
+
 ## [1.0.0] - 2025-11-18
 
 ### Added

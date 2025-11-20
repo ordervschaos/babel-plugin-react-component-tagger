@@ -20,8 +20,12 @@ tests/
 .gitlab-ci.yml
 .travis.yml
 
-# Documentation (except README.md which is included)
+# Documentation (except README.md and CHANGELOG.md which are included)
 docs/
+ISSUE_ANALYSIS.md
+LOCAL_TESTING_GUIDE.md
+test-plugin.js
+screenshot.png
 
 # Examples
 examples/
